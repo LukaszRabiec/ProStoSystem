@@ -2,9 +2,9 @@
 {
     using System.Data.Entity.ModelConfiguration;
     using Entities;
-    public class CategoryEntityConfiguration : EntityTypeConfiguration<Category>
+    public class CategoryConfiguration : EntityTypeConfiguration<Category>
     {
-        public CategoryEntityConfiguration()
+        public CategoryConfiguration()
         {
             Property(c => c.Name).IsRequired();
         }

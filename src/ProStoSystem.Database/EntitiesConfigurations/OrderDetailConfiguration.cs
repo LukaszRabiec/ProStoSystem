@@ -2,9 +2,9 @@
 {
     using System.Data.Entity.ModelConfiguration;
     using Entities;
-    public class OrderDetailEntityConfiguration : EntityTypeConfiguration<OrderDetail>
+    public class OrderDetailConfiguration : EntityTypeConfiguration<OrderDetail>
     {
-        public OrderDetailEntityConfiguration()
+        public OrderDetailConfiguration()
         {
             HasRequired(od => od.BillType)
                 .WithMany(b => b.OrderDetails)

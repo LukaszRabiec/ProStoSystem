@@ -28,11 +28,11 @@
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Configurations.Add(new ProductEntityConfiguration());
-            modelBuilder.Configurations.Add(new OrderDetailEntityConfiguration());
-            modelBuilder.Configurations.Add(new CategoryEntityConfiguration());
-            modelBuilder.Configurations.Add(new SalesmanEntityConfiguration());
-            modelBuilder.Configurations.Add(new BillTypeEntityConfiguration());
+            modelBuilder.Configurations.Add(new ProductConfiguration());
+            modelBuilder.Configurations.Add(new OrderDetailConfiguration());
+            modelBuilder.Configurations.Add(new CategoryConfiguration());
+            modelBuilder.Configurations.Add(new SalesmanConfiguration());
+            modelBuilder.Configurations.Add(new BillTypeConfiguration());
         }
     }
 }

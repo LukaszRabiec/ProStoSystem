@@ -90,11 +90,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
-    <Compile Include="EntitiesConfigurations\BillTypeEntityConfiguration.cs" />
-    <Compile Include="EntitiesConfigurations\CategoryEntityConfiguration.cs" />
-    <Compile Include="EntitiesConfigurations\OrderDetailEntityConfiguration.cs" />
-    <Compile Include="EntitiesConfigurations\ProductEntityConfiguration.cs" />
-    <Compile Include="EntitiesConfigurations\SalesmanEntityConfiguration.cs" />
+    <Compile Include="EntitiesConfigurations\BillTypeConfiguration.cs" />
+    <Compile Include="EntitiesConfigurations\CategoryConfiguration.cs" />
+    <Compile Include="EntitiesConfigurations\OrderDetailConfiguration.cs" />
+    <Compile Include="EntitiesConfigurations\ProductConfiguration.cs" />
+    <Compile Include="EntitiesConfigurations\SalesmanConfiguration.cs" />
+    <Compile Include="EntitiesMetadata\BillTypeMetadata.cs" />
+    <Compile Include="EntitiesMetadata\ProductMetadata.cs" />
     <Compile Include="Entities\ApplicationUser.cs" />
     <Compile Include="Entities\BillType.cs" />
     <Compile Include="Entities\Category.cs" />
@@ -125,6 +127,7 @@
       <DependentUpon>201701252106280_Init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
