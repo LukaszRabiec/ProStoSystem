@@ -3,7 +3,7 @@ Products Storage System is an ASP.NET MVC5 app that helps you manage your small 
 
 ## Configuration
 ### Add secrets file
-You need to add a file `secrets.config` in [main web project](src/ProStoSystem), with given keys:
+You need to add a file `secrets.config` in [main web project](src/ProStoSystem), with the following content:
 ```xml
 <appSettings>
   <add key="adminEmail" value="ADMIN_ACCOUNT_EMAIL"/>
