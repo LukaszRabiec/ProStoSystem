@@ -1,5 +1,6 @@
 namespace ProStoSystem.Database.Migrations
 {
+    using System.Configuration;
     using System.Data.Entity.Migrations;
     using System.Linq;
     using Entities;
@@ -7,14 +8,14 @@ namespace ProStoSystem.Database.Migrations
     using Microsoft.AspNet.Identity.EntityFramework;
     using Shared;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<ProStoSystem.Database.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(ProStoSystem.Database.ApplicationDbContext context)
+        protected override void Seed(ApplicationDbContext context)
         {
             SeedRoles(context);
             SeedBillTypes(context);
@@ -33,22 +34,22 @@ namespace ProStoSystem.Database.Migrations
             }
         }
 
-        // I know it's not the best solution. It's temporary.
-        // If you get here and you may have some ideas for creating
-        // owner account from app without registration, send me message :)
         private void SeedOwnerAccount(ApplicationDbContext context)
         {
             var userStore = new UserStore<ApplicationUser>(context);
             var userManager = new UserManager<ApplicationUser>(userStore);
 
             var ownerAccount = new ApplicationUser();
-            ownerAccount.UserName = "owner.pssystem@gmail.com";
-            ownerAccount.Email = "owner.pssystem@gmail.com";
+            var adminEmail = ConfigurationManager.AppSettings["adminEmail"];
+            var adminPassword = ConfigurationManager.AppSettings["adminPassword"];
+
+            ownerAccount.UserName = adminEmail;
+            ownerAccount.Email = adminEmail;
             ownerAccount.EmailConfirmed = true;
 
             if (!context.Users.Any(u => u.UserName == ownerAccount.UserName))
             {
-                var ownerResult = userManager.Create(ownerAccount, "Zxc!23");
+                var ownerResult = userManager.Create(ownerAccount, adminPassword);
 
                 if (ownerResult.Succeeded)
                 {

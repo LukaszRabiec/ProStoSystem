@@ -11,7 +11,7 @@ namespace ProStoSystem.Database.Migrations
                 c => new
                 {
                     Id = c.Int(nullable: false, identity: true),
-                    Name = c.String(nullable: false),
+                    Name = c.String(nullable: false, maxLength: 64),
                 })
                 .PrimaryKey(t => t.Id);
 
@@ -38,10 +38,11 @@ namespace ProStoSystem.Database.Migrations
                 c => new
                 {
                     Id = c.Int(nullable: false, identity: true),
-                    Name = c.Int(nullable: false),
+                    Name = c.String(nullable: false, maxLength: 128),
                     SellingPrice = c.Decimal(nullable: false, precision: 18, scale: 2),
                     PurchasePrice = c.Decimal(nullable: false, precision: 18, scale: 2),
                     Amount = c.Int(nullable: false),
+                    IsArchived = c.Boolean(nullable: false),
                     CategoryId = c.Int(nullable: false),
                 })
                 .PrimaryKey(t => t.Id)

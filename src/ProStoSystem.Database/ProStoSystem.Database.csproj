@@ -80,6 +80,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -106,9 +107,9 @@
     <Compile Include="Entities\Salesman.cs" />
     <Compile Include="IdentityConfig.cs" />
     <Compile Include="IoC\IdentityModule.cs" />
-    <Compile Include="Migrations\201701252106280_Init.cs" />
-    <Compile Include="Migrations\201701252106280_Init.Designer.cs">
-      <DependentUpon>201701252106280_Init.cs</DependentUpon>
+    <Compile Include="Migrations\201702242253259_Init.cs" />
+    <Compile Include="Migrations\201702242253259_Init.Designer.cs">
+      <DependentUpon>201702242253259_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -124,11 +125,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201701252106280_Init.resx">
-      <DependentUpon>201701252106280_Init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201702242253259_Init.resx">
+      <DependentUpon>201702242253259_Init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
