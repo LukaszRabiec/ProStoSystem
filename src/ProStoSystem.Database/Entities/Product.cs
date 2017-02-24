@@ -17,6 +17,7 @@
         public decimal SellingPrice { get; set; }
         public decimal PurchasePrice { get; set; }
         public int Amount { get; set; }
+        public bool IsArchived { get; set; }
         public int CategoryId { get; set; }
 
 

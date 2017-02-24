@@ -96,6 +96,7 @@
     <Compile Include="EntitiesConfigurations\ProductConfiguration.cs" />
     <Compile Include="EntitiesConfigurations\SalesmanConfiguration.cs" />
     <Compile Include="EntitiesMetadata\BillTypeMetadata.cs" />
+    <Compile Include="EntitiesMetadata\CategoryMetadata.cs" />
     <Compile Include="EntitiesMetadata\ProductMetadata.cs" />
     <Compile Include="Entities\ApplicationUser.cs" />
     <Compile Include="Entities\BillType.cs" />
