@@ -2,16 +2,17 @@
 
 namespace ProStoSystem.Logic.Repositories.Concrete
 {
+    using System;
     using Abstract;
     using Database;
     using Database.Entities;
     using System.Data.Entity;
 
-    public class ProductRepository : Repository<Product>, IProductRepository
+    public class CategoryRepository : Repository<Category>, ICategoryRepository
     {
-        private readonly ApplicationDbContext _context;
+        private ApplicationDbContext _context;
 
-        public ProductRepository(ApplicationDbContext context) : base(context)
+        public CategoryRepository(ApplicationDbContext context) : base(context)
         {
             _context = context;
         }
