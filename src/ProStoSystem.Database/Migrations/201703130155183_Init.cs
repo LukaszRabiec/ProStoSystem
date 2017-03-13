@@ -1,5 +1,6 @@
 namespace ProStoSystem.Database.Migrations
 {
+    using System;
     using System.Data.Entity.Migrations;
 
     public partial class Init : DbMigration
@@ -7,7 +8,7 @@ namespace ProStoSystem.Database.Migrations
         public override void Up()
         {
             CreateTable(
-                "dbo.BillTypes",
+                "dbo.BillType",
                 c => new
                 {
                     Id = c.Int(nullable: false, identity: true),
@@ -16,7 +17,7 @@ namespace ProStoSystem.Database.Migrations
                 .PrimaryKey(t => t.Id);
 
             CreateTable(
-                "dbo.OrderDetails",
+                "dbo.OrderDetail",
                 c => new
                 {
                     Id = c.Int(nullable: false, identity: true),
@@ -28,13 +29,13 @@ namespace ProStoSystem.Database.Migrations
                     SalesmanId = c.Int(nullable: false),
                 })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.BillTypes", t => t.BillTypeId, cascadeDelete: true)
-                .ForeignKey("dbo.Salesmen", t => t.SalesmanId, cascadeDelete: true)
+                .ForeignKey("dbo.BillType", t => t.BillTypeId, cascadeDelete: true)
+                .ForeignKey("dbo.Salesman", t => t.SalesmanId, cascadeDelete: true)
                 .Index(t => t.BillTypeId)
                 .Index(t => t.SalesmanId);
 
             CreateTable(
-                "dbo.Products",
+                "dbo.Product",
                 c => new
                 {
                     Id = c.Int(nullable: false, identity: true),
@@ -46,20 +47,20 @@ namespace ProStoSystem.Database.Migrations
                     CategoryId = c.Int(nullable: false),
                 })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Categories", t => t.CategoryId, cascadeDelete: true)
+                .ForeignKey("dbo.Category", t => t.CategoryId, cascadeDelete: true)
                 .Index(t => t.CategoryId);
 
             CreateTable(
-                "dbo.Categories",
+                "dbo.Category",
                 c => new
                 {
                     Id = c.Int(nullable: false, identity: true),
-                    Name = c.String(nullable: false),
+                    Name = c.String(nullable: false, maxLength: 64),
                 })
                 .PrimaryKey(t => t.Id);
 
             CreateTable(
-                "dbo.Salesmen",
+                "dbo.Salesman",
                 c => new
                 {
                     Id = c.Int(nullable: false, identity: true),
@@ -144,8 +145,8 @@ namespace ProStoSystem.Database.Migrations
                     OrderDetailId = c.Int(nullable: false),
                 })
                 .PrimaryKey(t => new { t.ProductId, t.OrderDetailId })
-                .ForeignKey("dbo.Products", t => t.ProductId, cascadeDelete: true)
-                .ForeignKey("dbo.OrderDetails", t => t.OrderDetailId, cascadeDelete: true)
+                .ForeignKey("dbo.Product", t => t.ProductId, cascadeDelete: true)
+                .ForeignKey("dbo.OrderDetail", t => t.OrderDetailId, cascadeDelete: true)
                 .Index(t => t.ProductId)
                 .Index(t => t.OrderDetailId);
 
@@ -157,11 +158,11 @@ namespace ProStoSystem.Database.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.OrderDetails", "SalesmanId", "dbo.Salesmen");
-            DropForeignKey("dbo.ProductOrder", "OrderDetailId", "dbo.OrderDetails");
-            DropForeignKey("dbo.ProductOrder", "ProductId", "dbo.Products");
-            DropForeignKey("dbo.Products", "CategoryId", "dbo.Categories");
-            DropForeignKey("dbo.OrderDetails", "BillTypeId", "dbo.BillTypes");
+            DropForeignKey("dbo.OrderDetail", "SalesmanId", "dbo.Salesman");
+            DropForeignKey("dbo.ProductOrder", "OrderDetailId", "dbo.OrderDetail");
+            DropForeignKey("dbo.ProductOrder", "ProductId", "dbo.Product");
+            DropForeignKey("dbo.Product", "CategoryId", "dbo.Category");
+            DropForeignKey("dbo.OrderDetail", "BillTypeId", "dbo.BillType");
             DropIndex("dbo.ProductOrder", new[] { "OrderDetailId" });
             DropIndex("dbo.ProductOrder", new[] { "ProductId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
@@ -170,20 +171,20 @@ namespace ProStoSystem.Database.Migrations
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.Products", new[] { "CategoryId" });
-            DropIndex("dbo.OrderDetails", new[] { "SalesmanId" });
-            DropIndex("dbo.OrderDetails", new[] { "BillTypeId" });
+            DropIndex("dbo.Product", new[] { "CategoryId" });
+            DropIndex("dbo.OrderDetail", new[] { "SalesmanId" });
+            DropIndex("dbo.OrderDetail", new[] { "BillTypeId" });
             DropTable("dbo.ProductOrder");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
-            DropTable("dbo.Salesmen");
-            DropTable("dbo.Categories");
-            DropTable("dbo.Products");
-            DropTable("dbo.OrderDetails");
-            DropTable("dbo.BillTypes");
+            DropTable("dbo.Salesman");
+            DropTable("dbo.Category");
+            DropTable("dbo.Product");
+            DropTable("dbo.OrderDetail");
+            DropTable("dbo.BillType");
         }
     }
 }

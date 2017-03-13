@@ -6,7 +6,9 @@
     {
         public CategoryConfiguration()
         {
-            Property(c => c.Name).IsRequired();
+            Property(c => c.Name)
+                .HasMaxLength(64)
+                .IsRequired();
         }
     }
 }

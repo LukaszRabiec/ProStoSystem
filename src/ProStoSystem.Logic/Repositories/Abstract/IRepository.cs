@@ -3,13 +3,14 @@
 namespace ProStoSystem.Logic.Repositories.Abstract
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq.Expressions;
 
     public interface IRepository<TEntity> where TEntity : class
     {
-        IQueryable<TEntity> GetSpecified(Expression<Func<TEntity, bool>> prediction);
+        IEnumerable<TEntity> GetSpecified(Expression<Func<TEntity, bool>> prediction);
 
-        IQueryable<TEntity> GetAll();
+        IEnumerable<TEntity> GetAll();
 
         TEntity Get(Expression<Func<TEntity, bool>> prediction);
 

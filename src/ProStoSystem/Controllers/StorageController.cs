@@ -4,20 +4,19 @@ namespace ProStoSystem.Controllers
 {
     using Database.Entities;
     using Logic.Repositories.Abstract;
-    using Logic.UoW;
 
     public class StorageController : Controller
     {
-        private readonly IUnitOfWork _uow;
+        private readonly IProductRepository _productRepository;
 
-        public StorageController(IUnitOfWork unitOfWork)
+        public StorageController(IProductRepository productRepository)
         {
-            _uow = unitOfWork;
+            _productRepository = productRepository;
         }
 
         public ActionResult Index()
         {
-            var products = _uow.Repository<Product>().GetAll();
+            var products = _productRepository.GetAll();
             return View(products);
         }
 

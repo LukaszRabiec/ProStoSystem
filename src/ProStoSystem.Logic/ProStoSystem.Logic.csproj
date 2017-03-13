@@ -69,8 +69,8 @@
     <Compile Include="Repositories\Concrete\CategoryRepository.cs" />
     <Compile Include="Repositories\Concrete\ProductRepository.cs" />
     <Compile Include="Repositories\Concrete\Repository.cs" />
-    <Compile Include="UoW\IUnitOfWork.cs" />
-    <Compile Include="UoW\UnitOfWork.cs" />
+    <Compile Include="Services\Abstract\IProductService.cs" />
+    <Compile Include="Services\Concrete\ProductService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

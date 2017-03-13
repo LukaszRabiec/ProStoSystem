@@ -2,6 +2,7 @@ namespace ProStoSystem.Database.Migrations
 {
     using System.Configuration;
     using System.Data.Entity.Migrations;
+    using System.Data.Entity.ModelConfiguration.Conventions;
     using System.Linq;
     using Entities;
     using Microsoft.AspNet.Identity;
@@ -20,6 +21,8 @@ namespace ProStoSystem.Database.Migrations
             SeedRoles(context);
             SeedBillTypes(context);
             SeedOwnerAccount(context);
+            SeedCategories(context);
+            SeedProducts(context);
         }
 
         private void SeedRoles(ApplicationDbContext context)
@@ -75,6 +78,48 @@ namespace ProStoSystem.Database.Migrations
                 context.Set<BillType>().AddOrUpdate(invoice);
                 context.SaveChanges();
             }
+        }
+
+        private void SeedCategories(ApplicationDbContext context)
+        {
+            for (int i = 1; i <= 5; i++)
+            {
+                var category = new Category
+                {
+                    Id = i,
+                    Name = $"Category {i}"
+                };
+
+                if (!context.Categories.Any(c => c.Name == category.Name))
+                {
+                    context.Categories.AddOrUpdate(category);
+                }
+            }
+
+            context.SaveChanges();
+        }
+
+        private void SeedProducts(ApplicationDbContext context)
+        {
+            for (int i = 1; i <= 20; i++)
+            {
+                var product = new Product
+                {
+                    Id = i,
+                    Name = $"Product {i}",
+                    Amount = i,
+                    PurchasePrice = i + 2,
+                    SellingPrice = i + 3,
+                    CategoryId = i % 5 + 1
+                };
+
+                if (!context.Products.Any(p => p.Name == product.Name))
+                {
+                    context.Products.AddOrUpdate(product);
+                }
+            }
+
+            context.SaveChanges();
         }
     }
 }

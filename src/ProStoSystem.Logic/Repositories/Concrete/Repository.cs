@@ -3,6 +3,7 @@ using System.Linq;
 
 namespace ProStoSystem.Logic.Repositories.Concrete
 {
+    using System.Collections.Generic;
     using Abstract;
     using Database;
     using System.Data.Entity;
@@ -19,12 +20,12 @@ namespace ProStoSystem.Logic.Repositories.Concrete
             _dbSet = _context.Set<TEntity>();
         }
 
-        public IQueryable<TEntity> GetSpecified(Expression<Func<TEntity, bool>> predicate)
+        public IEnumerable<TEntity> GetSpecified(Expression<Func<TEntity, bool>> predicate)
         {
             return _dbSet.Where(predicate).AsNoTracking();
         }
 
-        public IQueryable<TEntity> GetAll()
+        public IEnumerable<TEntity> GetAll()
         {
             return _dbSet.AsNoTracking();
         }

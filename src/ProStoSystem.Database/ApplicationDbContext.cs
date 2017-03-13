@@ -1,6 +1,7 @@
 ﻿namespace ProStoSystem.Database
 {
     using System.Data.Entity;
+    using System.Data.Entity.ModelConfiguration.Conventions;
     using Entities;
     using EntitiesConfigurations;
     using Microsoft.AspNet.Identity.EntityFramework;
@@ -27,6 +28,8 @@
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
             modelBuilder.Configurations.Add(new ProductConfiguration());
             modelBuilder.Configurations.Add(new OrderDetailConfiguration());
