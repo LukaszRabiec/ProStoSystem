@@ -1,11 +1,8 @@
-﻿using System.Linq;
-
-namespace ProStoSystem.Logic.Repositories.Concrete
+﻿namespace ProStoSystem.Logic.Repositories.Concrete
 {
     using Abstract;
     using Database;
     using Database.Entities;
-    using System.Data.Entity;
 
     public class ProductRepository : Repository<Product>, IProductRepository
     {

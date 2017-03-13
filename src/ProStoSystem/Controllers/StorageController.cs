@@ -2,21 +2,22 @@
 
 namespace ProStoSystem.Controllers
 {
+    using System.Linq;
     using Database.Entities;
-    using Logic.Repositories.Abstract;
+    using Logic.Services.Abstract;
 
     public class StorageController : Controller
     {
-        private readonly IProductRepository _productRepository;
+        private readonly IProductService _productService;
 
-        public StorageController(IProductRepository productRepository)
+        public StorageController(IProductService productService)
         {
-            _productRepository = productRepository;
+            _productService = productService;
         }
 
         public ActionResult Index()
         {
-            var products = _productRepository.GetAll();
+            var products = _productService.GetAll();
             return View(products);
         }
 

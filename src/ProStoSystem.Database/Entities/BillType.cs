@@ -11,6 +11,7 @@ namespace ProStoSystem.Database.Entities
 
         public int Id { get; set; }
         public string Name { get; set; }
+        public bool IsArchived { get; set; }
 
 
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }

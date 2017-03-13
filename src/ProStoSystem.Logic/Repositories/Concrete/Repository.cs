@@ -8,46 +8,47 @@ namespace ProStoSystem.Logic.Repositories.Concrete
     using Database;
     using System.Data.Entity;
     using System.Linq.Expressions;
+    using Database.Entities;
 
-    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+    public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         private ApplicationDbContext _context;
         private IDbSet<TEntity> _dbSet;
 
-        public Repository(ApplicationDbContext context)
+        protected Repository(ApplicationDbContext context)
         {
             _context = context;
             _dbSet = _context.Set<TEntity>();
         }
 
-        public IEnumerable<TEntity> GetSpecified(Expression<Func<TEntity, bool>> predicate)
+        public virtual IEnumerable<TEntity> GetSpecified(Expression<Func<TEntity, bool>> predicate)
         {
-            return _dbSet.Where(predicate).AsNoTracking();
+            return _dbSet.Where(predicate).AsNoTracking().ToList();
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public virtual IEnumerable<TEntity> GetAll()
         {
-            return _dbSet.AsNoTracking();
+            return _dbSet.AsNoTracking().ToList();
         }
 
-        public TEntity Get(Expression<Func<TEntity, bool>> predicate)
+        public virtual TEntity Get(Expression<Func<TEntity, bool>> predicate)
         {
             return _dbSet.FirstOrDefault(predicate);
         }
 
-        public void Add(TEntity entity)
+        public virtual void Add(TEntity entity)
         {
             _dbSet.Add(entity);
         }
 
-        public void Update(TEntity entity)
+        public virtual void Update(TEntity entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
         }
 
-        public void Remove(TEntity entity)
+        public virtual void SaveChanges()
         {
-            _dbSet.Remove(entity);
+            _context.SaveChanges();
         }
     }
 }

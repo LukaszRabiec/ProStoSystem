@@ -14,8 +14,10 @@
                 .WithMany(s => s.OrderDetails)
                 .HasForeignKey(od => od.SalesmanId);
 
-            Property(od => od.Customer).IsRequired();
-            Property(od => od.OrderDate).IsRequired();
+            Property(od => od.Customer)
+                .IsRequired();
+            Property(od => od.OrderDate)
+                .IsRequired();
         }
     }
 }

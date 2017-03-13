@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ProStoSystem.Logic.Services.Abstract
 {
+    using Database.Entities;
+
     public interface IProductService
     {
-
+        IEnumerable<Product> GetAll();
     }
 }

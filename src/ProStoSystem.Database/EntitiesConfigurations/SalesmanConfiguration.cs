@@ -6,8 +6,10 @@
     {
         public SalesmanConfiguration()
         {
-            Property(s => s.FirstName).IsRequired();
-            Property(s => s.LastName).IsRequired();
+            Property(s => s.FirstName)
+                .IsRequired();
+            Property(s => s.LastName)
+                .IsRequired();
         }
     }
 }

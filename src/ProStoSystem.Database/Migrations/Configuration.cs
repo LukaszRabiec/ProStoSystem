@@ -116,6 +116,7 @@ namespace ProStoSystem.Database.Migrations
                 if (!context.Products.Any(p => p.Name == product.Name))
                 {
                     context.Products.AddOrUpdate(product);
+                    context.Categories.FirstOrDefault(c => c.Id == product.Category.Id).Products.Add(product);
                 }
             }
 

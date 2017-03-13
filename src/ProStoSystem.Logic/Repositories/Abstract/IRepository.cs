@@ -1,10 +1,10 @@
-﻿using System.Linq;
-
-namespace ProStoSystem.Logic.Repositories.Abstract
+﻿namespace ProStoSystem.Logic.Repositories.Abstract
 {
     using System;
     using System.Collections.Generic;
     using System.Linq.Expressions;
+    using System.Xml.Serialization;
+    using Database.Entities;
 
     public interface IRepository<TEntity> where TEntity : class
     {
@@ -18,6 +18,6 @@ namespace ProStoSystem.Logic.Repositories.Abstract
 
         void Update(TEntity entity);
 
-        void Remove(TEntity entity);
+        void SaveChanges();
     }
 }

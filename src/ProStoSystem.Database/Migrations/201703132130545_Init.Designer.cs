@@ -13,7 +13,7 @@ namespace ProStoSystem.Database.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201703130155183_Init"; }
+            get { return "201703132130545_Init"; }
         }
         
         string IMigrationMetadata.Source

@@ -16,7 +16,7 @@
                     pod.MapRightKey("OrderDetailId");
                 });
 
-            HasRequired(p => p.Category)
+            HasOptional(p => p.Category)
                 .WithMany(c => c.Products)
                 .HasForeignKey(p => p.CategoryId);
 

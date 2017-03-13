@@ -13,6 +13,7 @@ namespace ProStoSystem.Database.Migrations
                 {
                     Id = c.Int(nullable: false, identity: true),
                     Name = c.String(nullable: false, maxLength: 64),
+                    IsArchived = c.Boolean(nullable: false),
                 })
                 .PrimaryKey(t => t.Id);
 
@@ -44,10 +45,10 @@ namespace ProStoSystem.Database.Migrations
                     PurchasePrice = c.Decimal(nullable: false, precision: 18, scale: 2),
                     Amount = c.Int(nullable: false),
                     IsArchived = c.Boolean(nullable: false),
-                    CategoryId = c.Int(nullable: false),
+                    CategoryId = c.Int(),
                 })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Category", t => t.CategoryId, cascadeDelete: true)
+                .ForeignKey("dbo.Category", t => t.CategoryId)
                 .Index(t => t.CategoryId);
 
             CreateTable(
@@ -66,6 +67,7 @@ namespace ProStoSystem.Database.Migrations
                     Id = c.Int(nullable: false, identity: true),
                     FirstName = c.String(nullable: false),
                     LastName = c.String(nullable: false),
+                    IsArchived = c.Boolean(nullable: false),
                 })
                 .PrimaryKey(t => t.Id);
 
